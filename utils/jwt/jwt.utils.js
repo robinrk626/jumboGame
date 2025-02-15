@@ -19,8 +19,6 @@ const decodeToken = (token='') => {
   return decodedToken;
 }
 
-
-
 module.exports = {
   generateToken,
   decodeToken,
