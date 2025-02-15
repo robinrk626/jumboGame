@@ -5,10 +5,6 @@
         "password": "robingarg6626",
         "databaseName": "admin"
     },
-    "elasticConnection": {
-        "port": 9200,
-        "hostname": "localhost"
-    },
     "redisConnection": {
         "port": 6379,
         "hostname": "localhost"
