@@ -10,6 +10,9 @@ const {
 const routes = require('./routes');
 const { createServer } = require('http');
 const { getConfig } = require('./config');
+const {
+  init: mongodbInit
+} = require('./mongodb');
 const config = getConfig();
 
 const DEFAULT_PORT = 3000;
@@ -41,8 +44,9 @@ const server = createServer(app);
 const port = config.PORT || DEFAULT_PORT;
 server.listen(port, async () => {
   try {
-      console.log(`Server started at port ${port}`);
+    mongodbInit(config.database);
+    console.log(`Server started at port ${port}`);
   } catch (err) {
-      console.error("Failed to start server:", err);
+    console.error("Failed to start server:", err);
   }
 });
