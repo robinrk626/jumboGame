@@ -11,6 +11,10 @@ const PlayerSchema = new Schema({
   sessionId: {
     type: Schema.Types.ObjectId, required: true, ref: userSessionModel.collection.name,
   },
+  stats: {
+    rightAnswersCount: { type: Number, default: 0 },
+    wrongAnswersCount: { type: Number, default: 0 },
+  },
 }, { _id: false });
 
 const GameSchema = new Schema({
@@ -29,9 +33,15 @@ const GameSchema = new Schema({
       type: Schema.Types.ObjectId, required: true, ref: userModel.collection.name,
     },
   }],
+  currentQuestion: {
+    type: Number, default: 0,
+  },
+  totalQuestions: {
+    type: Number, required: true,
+  },
   winnerUserId: {
     type: Schema.Types.ObjectId, default: null, ref: userModel.collection.name,
   },
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('game', GameSchema, 'game');

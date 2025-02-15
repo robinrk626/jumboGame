@@ -18,7 +18,7 @@ const validateCreateQuestionParams = (req, res, next) => {
       if (!option.optionText) {
         throwValidationError({ message: VALIDATION_MESSAGES.INVALID_OPTIONS });
       }
-      if (option.isCorrect) {
+      if (option.isRight) {
         isRightOptionSelected = true;
       }
     })

@@ -1,4 +1,4 @@
-const { VALIDATION_MESSAGES } = require("./questions.constants");
+const { QuestionsModel } = require("../../mongodb/models");
 
 const createQuestionHelper = async ({
   userId,

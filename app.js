@@ -17,6 +17,7 @@ const config = getConfig();
 const {
   authMiddleware,
 } = require('./middlewares/authMiddleware');
+const { connectSocket } = require('./socket/socketEvents.js');
 
 const DEFAULT_PORT = 3000;
 
@@ -44,6 +45,7 @@ app.use((error, req, res) => errorResponse({
 }));
 
 const server = createServer(app);
+connectSocket(server);
 
 const port = config.PORT || DEFAULT_PORT;
 server.listen(port, async () => {
