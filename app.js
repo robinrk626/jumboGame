@@ -14,6 +14,9 @@ const {
   init: mongodbInit
 } = require('./mongodb');
 const config = getConfig();
+const {
+  authMiddleware,
+} = require('./middlewares/authMiddleware');
 
 const DEFAULT_PORT = 3000;
 
@@ -24,6 +27,7 @@ app.use(helmet());
 app.use(cors());
 app.use(compression());
 
+app.use('/auth', authMiddleware)
 routes(app);
 
 app.use((req, res) => errorResponse({
